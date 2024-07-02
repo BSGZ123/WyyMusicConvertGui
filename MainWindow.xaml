@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WyyMusicConvertGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="700">
+        Title="WyyMusicCovGui" Height="350" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -15,5 +15,49 @@
             
         </Grid.RowDefinitions>
 
+        <Border Grid.Row="0" Background="Transparent" Padding="12,8" Margin="0,1" BorderThickness="2" BorderBrush="RoyalBlue" CornerRadius="10">
+            <StackPanel Orientation="Vertical">
+                <Label Content="选择输入来源:" FontSize="28" FontWeight="Bold"></Label>
+                <RadioButton Content="单个文件"  x:Name="Single" Checked="SelectMode"></RadioButton>
+                <RadioButton Content="多个文件" x:Name="Multiple" Checked="SelectMode"></RadioButton>
+                <RadioButton Content="单一目录" x:Name="Folder"  Checked="SelectMode"></RadioButton>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Background="Transparent" Padding="12,8" Margin="0,1" BorderThickness="2" BorderBrush="PaleVioletRed" CornerRadius="10">
+
+            <StackPanel Orientation="Vertical">
+
+                <Label Content="附加设置:" FontSize="28" FontWeight="Bold"></Label>
+
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="False" VerticalAlignment="Center">
+                    </CheckBox>
+                    <Label Content="从网络获取封面(仅在内嵌封面不存在的情况下获取)" VerticalAlignment="Center"></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="False" VerticalAlignment="Center">
+                    </CheckBox>
+                    <Label Content="从网络获取歌词(暂不支持翻译歌词)" VerticalAlignment="Center"></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="False" VerticalAlignment="Center">
+                    </CheckBox>
+                    <Label Content="覆盖已有文件" VerticalAlignment="Center"></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="False" VerticalAlignment="Center">
+                    </CheckBox>
+                    <Label Content="自动删除旧文件" VerticalAlignment="Center"></Label>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="3" Content="Next" Click="Button_Click" Width="300">
+            
+        </Button>
     </Grid>
 </Window>

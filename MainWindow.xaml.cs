@@ -16,9 +16,25 @@ namespace WyyMusicConvertGui
     /// </summary>
     public partial class MainWindow : Window
     {
+        //设定为单一文件来源模式(全局)
+        public string SelectModeString { get; set; } = "Single";
+
+
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void SelectMode(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
