@@ -56,7 +56,7 @@
             </StackPanel>
         </Border>
 
-        <Button Grid.Row="3" Content="Next" Click="Button_Click" Width="300">
+        <Button Grid.Row="3" Content="Next" Click="Button_Click" Width="300" HorizontalAlignment="Center">
             
         </Button>
     </Grid>
