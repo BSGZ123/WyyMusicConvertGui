@@ -44,6 +44,7 @@ namespace WyyMusicConvertGui
         {
             var picker = new FileOpenPicker();
             var fpicker= new FolderPicker();
+            NavigationWindow navigationWindow = new NavigationWindow();
 
             /*Process.GetCurrentProcess().MainWindowHandle
              * 在一个非 UWP 或 WinUI 的桌面应用程序中，当你需要从当前进程的主窗口（必须是唯一的且应用程序的 MainWindow 已经初始化）获取窗口句柄时使用。
@@ -69,6 +70,9 @@ namespace WyyMusicConvertGui
                 if (result != null) {
                     List<string> files = [result.Path];
                     MessageBox.Show("+++++" + result.Path + "  ++++");
+                    navigationWindow.Content = new FileListPage();
+                    navigationWindow.Show();
+                    this.Close();
                 }
             }
 
