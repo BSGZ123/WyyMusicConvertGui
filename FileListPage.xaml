@@ -5,10 +5,74 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WyyMusicConvertGui"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="FileListPage">
+      d:DesignHeight="350" d:DesignWidth="700"
+      Title="FileListPage"
+      Loaded="Page_Loaded">
 
     <Grid>
-        <TextBlock Text="This is a new page!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" Background="Snow"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <DataGrid Grid.Row="0" 
+                  x:Name="MusicItemListView" 
+                  ItemsSource="{Binding  MusicItems.MusicDescriptorList}"
+                  VerticalScrollBarVisibility="Auto"
+                  ScrollBar.Scroll="MusicItemListView_Scroll">
+            <DataGrid.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1"
+                            Background="Transparent"
+                            Padding="12,8"
+                            Margin="0,1"
+                            CornerRadius="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding CoverImage}"
+                                   Grid.Column="0"
+                                   Height="100"
+                                   Width="100">
+
+                                <Image.Clip>
+                                    <EllipseGeometry  RadiusX="220" RadiusY="220" Center="220,150"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Grid Grid.Column="1" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" 
+                                        Content ="{Binding MusicName}"
+                                        FontSize="24"
+                                        FontWeight="Bold">
+                                </Label>
+                                <Label Grid.Row="2"
+                                       Content="{Binding FileInfo}"
+                                       FontSize="12"
+                                       VerticalAlignment="Bottom">
+                                </Label>
+                            </Grid>
+
+                            <CheckBox Grid.Column="2" Checked="CheckBox_Checked"></CheckBox>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.ItemTemplate>
+            
+        </DataGrid>
+        
     </Grid>
 </Page>

@@ -70,7 +70,7 @@ namespace WyyMusicConvertGui
                 if (result != null) {
                     List<string> files = [result.Path];
                     MessageBox.Show("+++++" + result.Path + "  ++++");
-                    navigationWindow.Content = new FileListPage();
+                    navigationWindow.Content = new FileListPage(files);
                     navigationWindow.Show();
                     this.Close();
                 }
