@@ -22,18 +22,37 @@ namespace WyyMusicConvertGui
     {
 
         private List<string> Files;
-        public MusicItemList MusicItems { get; set; }=new MusicItemList();
+        public MusicItemList MusicItems { get; set; }=new ();
         private int SelectedFileCount = 0;
 
         public FileListPage(List<string> files)
         {
             InitializeComponent();
-            Files=files;
+            this.DataContext = this;
+            Files =files;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            UpdateFileList();
+            MessageBox.Show(Files.Count + "   777"+MusicItems.MusicDescriptorList.Where(x=>x.IsItemChecked));
+        }
 
+        private Task UpdateFileList()
+        {
+           MusicItems.MusicDescriptorList.Clear();
+            return Task.Run(() =>
+            {
+                GC.Collect();
+                Files.ForEach(f =>
+                {
+                    if (NeteaseCryptoMusic.CheckFile(f) == false)
+                        return;
+                    MusicItems.MusicDescriptorList.Add(new MusicDescriptor(f));
+                });
+
+            }
+            );
         }
 
         private void MusicItemListView_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
@@ -43,7 +62,21 @@ namespace WyyMusicConvertGui
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("暂时没用哦");
+        }
+
+        private void NextStepButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
+
+        private void MusicItemListView_MouseMove(object sender, MouseEventArgs e)
+        {
+            //var grid = sender as Grid;
+            //var descriptor = grid.DataContext as MusicDescriptor;
+            //descriptor.IsItemChecked = !descriptor.IsItemChecked;
+
+        }
+
     }
 }
