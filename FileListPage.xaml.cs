@@ -35,7 +35,7 @@ namespace WyyMusicConvertGui
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateFileList();
-            MessageBox.Show(Files.Count + "   777"+MusicItems.MusicDescriptorList.Where(x=>x.IsItemChecked));
+            MessageBox.Show(Files.Count + "   777");
         }
 
         private Task UpdateFileList()
@@ -67,7 +67,13 @@ namespace WyyMusicConvertGui
 
         private void NextStepButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationWindow navigationWindow = new NavigationWindow();
+            //这是被选中转换的ncm文件
+            var newFileList = MusicItems.MusicDescriptorList.Where(f => f.IsItemChecked).Select( f=> f.FileName).ToList();
+            foreach (var file in newFileList) { MessageBox.Show(file); }
+            navigationWindow.Content = new PerformingAction();
+            navigationWindow.Show();
+            
         }
 
         private void MusicItemListView_MouseMove(object sender, MouseEventArgs e)

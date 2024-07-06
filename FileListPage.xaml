@@ -76,7 +76,7 @@
             </DataGrid.ItemTemplate>
             
         </DataGrid>
-        <Button x:Name="NextStepButton" IsEnabled="False" Content="下一步"  Grid.Row = "1" Click="NextStepButton_Click" >
+        <Button x:Name="NextStepButton" IsEnabled="True" Content="下一步"  Grid.Row = "1" Click="NextStepButton_Click" >
         </Button>
     </Grid>
 </Page>
