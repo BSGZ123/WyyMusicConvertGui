@@ -71,7 +71,7 @@ namespace WyyMusicConvertGui
             //这是被选中转换的ncm文件
             var newFileList = MusicItems.MusicDescriptorList.Where(f => f.IsItemChecked).Select( f=> f.FileName).ToList();
             foreach (var file in newFileList) { MessageBox.Show(file); }
-            navigationWindow.Content = new PerformingAction();
+            navigationWindow.Content = new PerformingAction(newFileList);
             navigationWindow.Show();
             
         }

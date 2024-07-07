@@ -6,9 +6,78 @@
       xmlns:local="clr-namespace:WyyMusicConvertGui"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PerformingAction">
+      Title="PerformingAction"
+      Loaded="Page_Loaded">
 
     <Grid>
-        <TextBlock Text="Hello~" VerticalAlignment="Center" FontSize="28" Background="Red"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" 
+              x:Name="MusicItemListView" 
+              ItemsSource="{Binding  MusicListItems}"
+              VerticalScrollBarVisibility="Auto"
+              
+              >
+            <DataGrid.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1"
+                        Background="Transparent"
+                        Padding="12,8"
+                        Margin="0,1"
+                        CornerRadius="5"
+                        >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <Image Source="{Binding CoverImage}"
+                               Grid.Column="0"
+                               Height="100"
+                               Width="100">
+
+                                <Image.Clip>
+                                    <EllipseGeometry  RadiusX="220" RadiusY="220" Center="220,150"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Grid Grid.Column="1" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" 
+                                    Content ="{Binding MusicName}"
+                                    FontSize="24"
+                                    FontWeight="Bold">
+                                </Label>
+                                <Label Grid.Row="2"
+                                   Content="{Binding FileInfo}"
+                                   FontSize="12"
+                                   VerticalAlignment="Bottom">
+                                </Label>
+                            </Grid>
+
+                            <Label Grid.Column="2" Content="{Binding Status}" FontSize="16" VerticalAlignment="Center"></Label>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.ItemTemplate>
+
+        </DataGrid>
+        <ProgressBar Grid.Row="1" x:Name="ActionProgressBar" Height="8" Visibility="Hidden" Value="0"></ProgressBar>
+        <Button x:Name="processButton"  Content="开始转换"  Grid.Row = "1" Click="ProcessButton_Click">
+        </Button>
     </Grid>
 </Page>
