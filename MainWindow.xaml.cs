@@ -37,7 +37,7 @@ namespace WyyMusicConvertGui
             if (radioButton.IsChecked == true )
             {
                 SelectModeString=radioButton.Name;
-                MessageBox.Show("选择了"+radioButton.Name+"按钮   识别字符串"+SelectModeString);
+                //MessageBox.Show("选择了"+radioButton.Name+"按钮   识别字符串"+SelectModeString);
             }
         }
 
@@ -71,7 +71,7 @@ namespace WyyMusicConvertGui
                 var result = await picker.PickSingleFileAsync();
                 if (result != null) {
                     List<string> files = [result.Path];
-                    MessageBox.Show("+++++" + result.Path + "  ++++");
+                    //MessageBox.Show("+++++" + result.Path + "  ++++");
                     navigationWindow.Content = new FileListPage(files);
                     navigationWindow.Show();
                     this.Close();
@@ -87,6 +87,7 @@ namespace WyyMusicConvertGui
                     foreach (var file in files)
                     {
                         MessageBox.Show(file);
+                        
                     }
 
                 }

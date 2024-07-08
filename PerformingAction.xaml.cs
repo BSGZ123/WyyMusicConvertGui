@@ -36,7 +36,7 @@ namespace WyyMusicConvertGui
 
         private void ProcessButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("开始转换啦啦啦~~~");
+            MessageBox.Show("请选择保存目录，开始转换啦啦啦~~~");
             ProcessFiles();
 
 
@@ -94,6 +94,7 @@ namespace WyyMusicConvertGui
                     if (item.CryptoMusic.WriteDecryptMusic(outdir))
                     {
                         item.Status = "OK";
+                        MessageBox.Show("文件转换完成！！！");
                     }
                     else
                     {
